@@ -9,7 +9,7 @@ schedule = Schedule.new(Date.today)
 schedule.add_recurrence_rule Rule.daily(4) 
 p schedule
  
-# Every second week, on Monday and Friday
+# Every other week, on Mondays and Fridays
 schedule = Schedule.new(Date.today)  
 schedule.add_recurrence_rule Rule.weekly(2).day(:monday, :friday)
 p schedule
@@ -27,7 +27,7 @@ schedule.add_recurrence_rule Rule.monthly.day_of_week(
 )
 p schedule
 
-# Every year on the 50th day and 100th day from the end
+# Every year on the 50th day and 100th day from the end of the year
 schedule = Schedule.new(Date.today)  
 schedule.add_recurrence_rule Rule.yearly.day_of_year(50, -100)  
 p schedule
