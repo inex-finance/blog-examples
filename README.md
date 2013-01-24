@@ -6,4 +6,5 @@ InEx Finance Blog Examples
 Topics:
 
 * ice_cube
+* jasmine
 
