@@ -5,10 +5,10 @@ describe "Test Suite", ->
 
 describe "Disabled", ->
   xdescribe "disabled suite", ->
-    it "will not run", ->
+    it "will not run, since the suite has been disabled", ->
       expect(true).toBe(true)
     
-  xit "is disabled", ->
+  xit "disabled test", ->
     expect(true).toBe(true)
     
   
@@ -16,7 +16,7 @@ describe "Matchers", ->
   it "compares using ===", ->
     expect(1 + 2).toBe(3)
     
-  it "compares variables and objects", ->
+  it "compares variables and objects (including content)", ->
     a = {x: 8, y: 9}
     b = {x: 8, y: 9}
     expect(a).toEqual(b)
@@ -54,13 +54,13 @@ describe "Matchers", ->
     expect([1, 2, 3]).toContain(2)
     expect("some string").toContain("some")
 
-  it "throws error", ->
+  it "throws exception", ->
     func = -> window.notExists.value
     expect(func).toThrow()
       
 
 describe "Setup/Teardown", ->
-  a = 0 # init variable in test suite context
+  a = 0 # defining variable in test suite context
   
   beforeEach ->
     a += 1
@@ -80,5 +80,5 @@ describe "Asynchronous", ->
     
   it "async executes code", ->
     runs(-> async())
-    waitsFor((-> a == 5), 3000)
+    waitsFor((-> a == 5), "the value should be changed", 3000)
     
