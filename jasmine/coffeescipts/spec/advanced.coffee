@@ -24,7 +24,7 @@ describe "Spy", ->
     person.addYear()
     expect(person.addYear.calls.length).toEqual(2)
 
-  it "checks arguments", ->
+  it "checks call arguments", ->
     spyOn(person, 'setName')
     person.setName("Ira")
     expect(person.setName).toHaveBeenCalledWith("Ira") # can have multiple parameters
@@ -34,7 +34,7 @@ describe "Spy", ->
     person.setName("Ira")
     expect(person.setName.mostRecentCall.args[0]).toEqual("Ira")
 
-  it "has access to all function calls", ->
+  it "has access to all calls", ->
     spyOn(person, 'setName')
     person.setName("Ira")
     expect(person.setName.calls[0].args[0]).toEqual("Ira")
@@ -77,8 +77,8 @@ describe "Clock", ->
     callback = jasmine.createSpy('TIMER')
     jasmine.Clock.useMock()
     
-  it "calls timeout synchronously", ->
-    setTimeout((-> callback()), 100) # call timeout 100ms
+  it "calls timeout function synchronously", ->
+    setTimeout((-> callback()), 100) # set timeout 100ms
     expect(callback).not.toHaveBeenCalled()
     jasmine.Clock.tick(101) # move clock 101ms
     expect(callback).toHaveBeenCalled()
