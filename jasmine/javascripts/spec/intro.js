@@ -9,11 +9,11 @@
 
   describe("Disabled", function() {
     xdescribe("disabled suite", function() {
-      return it("will not run", function() {
+      return it("will not run, since the suite has been disabled", function() {
         return expect(true).toBe(true);
       });
     });
-    return xit("is disabled", function() {
+    return xit("disabled test", function() {
       return expect(true).toBe(true);
     });
   });
@@ -22,7 +22,7 @@
     it("compares using ===", function() {
       return expect(1 + 2).toBe(3);
     });
-    it("compares variables and objects", function() {
+    it("compares variables and objects (including content)", function() {
       var a, b;
       a = {
         x: 8,
@@ -68,7 +68,7 @@
       expect([1, 2, 3]).toContain(2);
       return expect("some string").toContain("some");
     });
-    return it("throws error", function() {
+    return it("throws exception", function() {
       var func;
       func = function() {
         return window.notExists.value;
@@ -105,7 +105,7 @@
       });
       return waitsFor((function() {
         return a === 5;
-      }), 3000);
+      }), "the value should be changed", 3000);
     });
   });
 
