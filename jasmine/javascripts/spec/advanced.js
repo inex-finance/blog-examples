@@ -50,7 +50,7 @@
       person.addYear();
       return expect(person.addYear.calls.length).toEqual(2);
     });
-    it("checks arguments", function() {
+    it("checks call arguments", function() {
       spyOn(person, 'setName');
       person.setName("Ira");
       return expect(person.setName).toHaveBeenCalledWith("Ira");
@@ -60,7 +60,7 @@
       person.setName("Ira");
       return expect(person.setName.mostRecentCall.args[0]).toEqual("Ira");
     });
-    it("has access to all function calls", function() {
+    it("has access to all calls", function() {
       spyOn(person, 'setName');
       person.setName("Ira");
       return expect(person.setName.calls[0].args[0]).toEqual("Ira");
@@ -109,7 +109,7 @@
       callback = jasmine.createSpy('TIMER');
       return jasmine.Clock.useMock();
     });
-    return it("calls timeout synchronously", function() {
+    return it("calls timeout function synchronously", function() {
       setTimeout((function() {
         return callback();
       }), 100);
