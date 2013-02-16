@@ -17,9 +17,8 @@ class App.Collections.Notes extends Backbone.Collection
   model: App.Models.Note
   
   nextId: ->
-    max = @max((model)-> model.id).id
-    return max + 1 if max
-    1
+    return 1 if @length == 0
+    @max((model)-> model.id).id + 1
 
 class App.Views.NoteEdit extends Backbone.View
   events:

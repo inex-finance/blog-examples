@@ -51,14 +51,12 @@
     Notes.prototype.model = App.Models.Note;
 
     Notes.prototype.nextId = function() {
-      var max;
-      max = this.max(function(model) {
-        return model.id;
-      }).id;
-      if (max) {
-        return max + 1;
+      if (this.length === 0) {
+        return 1;
       }
-      return 1;
+      return this.max(function(model) {
+        return model.id;
+      }).id + 1;
     };
 
     return Notes;
