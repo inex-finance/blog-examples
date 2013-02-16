@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Backbone.js + Jasmine</title>
+  <link href='vendor/jasmine.css' rel='stylesheet' type='text/css'>
+	
+	<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+	<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js'></script>
+	<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js'></script>
+	<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/backbone.syphon/0.4.1/backbone.syphon.min.js'></script>
+
+	<script type='text/javascript' src='vendor/jasmine.js'></script>
+	<script type='text/javascript' src='vendor/jasmine-html.js'></script>
+
+  <script type='text/javascript' src='javascripts/src/app.js'></script>
+  <script type='text/javascript' src='javascripts/spec/app.js'></script>
+</head>
+<body>
+	
+  <div id="wrap" style="display: none;">
+    <div class="container">
+      <div class="page-header">
+        <h1>Backbone.js + Jasmine</h1>
+      </div>
+
+      <div id="primary-content"></div>
+    </div>
+  </div>
+  <hr>
+  
+  <script type="text/jst" id="formTemplate">
+    <div class="well">
+      <form class="form-signin">
+        <h2 class="form-signin-heading"></h2>
+        <div class="control-group">
+          <input type="text" class="input-block-level" name="author" placeholder="Author" value="<%= author %>">
+        </div>
+        <div class="control-group">
+          <textarea class="input-block-level" rows="5" name="text" placeholder="Text"><%= text %></textarea>
+        </div>
+        <div class="action-bar">
+          <button class="save btn btn-large btn-primary" type="submit">Save</button>
+          or
+          <a href="#notes/index" class="btn btn-large">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </script>
+  
+  <script type="text/template" id="indexTemplate">
+    <table class="table table-striped">
+      <thead>
+      	<tr>
+      		<th colspan="3">
+      			<h2>Notes List</h2>
+      		</th>
+        </tr>
+        <tr>
+          <th width="20%">Author</th>
+          <th width="70%">Text</th>
+          <th width="10%">
+     	      <a class="btn btn-info" href="#notes/new">
+     	      	<i class="icon-plus icon-white"></i>
+     	      </a>
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </script>
+
+  <script type="text/template" id="rowTemplate">
+    <td>
+      <a href="#notes/<%= id %>/edit"><%= author %></a>
+    </td>
+    <td><% print(text.substring(0, 100)) %>...</td>
+    <td>
+      <a href="#" class="delete btn btn-danger">
+      	<i class="icon-remove icon-white"></i>
+      </a>
+    </td>
+  </script>
+	
+</body>
+</html>
