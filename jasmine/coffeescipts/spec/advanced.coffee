@@ -18,18 +18,18 @@ describe "Spy", ->
     person.getName()
     expect(person.getName).toHaveBeenCalled()
     
-  it "checks number of calls", ->
+  it "tracks the number of calls", ->
     spyOn(person, 'addYear')
     person.addYear()
     person.addYear()
     expect(person.addYear.calls.length).toEqual(2)
 
-  it "checks call arguments", ->
+  it "tracks call arguments", ->
     spyOn(person, 'setName')
     person.setName("Ira")
-    expect(person.setName).toHaveBeenCalledWith("Ira") # can have multiple parameters
+    expect(person.setName).toHaveBeenCalledWith("Ira") # can have multiple arguments
     
-  it "has access to last call", ->
+  it "has access to the last call", ->
     spyOn(person, 'setName')
     person.setName("Ira")
     expect(person.setName.mostRecentCall.args[0]).toEqual("Ira")
@@ -80,7 +80,7 @@ describe "Clock", ->
   it "calls timeout function synchronously", ->
     setTimeout((-> callback()), 100) # set timeout 100ms
     expect(callback).not.toHaveBeenCalled()
-    jasmine.Clock.tick(101) # move clock 101ms
+    jasmine.Clock.tick(101) # move clock forward 101ms
     expect(callback).toHaveBeenCalled()
 
 describe "Any", ->

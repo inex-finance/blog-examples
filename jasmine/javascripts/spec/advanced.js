@@ -44,18 +44,18 @@
       person.getName();
       return expect(person.getName).toHaveBeenCalled();
     });
-    it("checks number of calls", function() {
+    it("tracks the number of calls", function() {
       spyOn(person, 'addYear');
       person.addYear();
       person.addYear();
       return expect(person.addYear.calls.length).toEqual(2);
     });
-    it("checks call arguments", function() {
+    it("tracks call arguments", function() {
       spyOn(person, 'setName');
       person.setName("Ira");
       return expect(person.setName).toHaveBeenCalledWith("Ira");
     });
-    it("has access to last call", function() {
+    it("has access to the last call", function() {
       spyOn(person, 'setName');
       person.setName("Ira");
       return expect(person.setName.mostRecentCall.args[0]).toEqual("Ira");

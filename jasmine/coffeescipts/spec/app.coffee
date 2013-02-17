@@ -12,20 +12,18 @@ describe "App.Models.Note", ->
     expect(note.get("text")).toEqual("")
     
   describe "Validation", ->
-    attrs = {}
-
     beforeEach ->
-      attrs = {author: "John", text: "Sometext"}
+      @attrs = {author: "John", text: "Sometext"}
         
     afterEach ->
-      note = new App.Models.Note(attrs)
+      note = new App.Models.Note(@attrs)
       expect(note.isValid()).toBeFalsy()
       
     it "validates the presence of author", ->
-      attrs["author"] = ""
+      @attrs["author"] = ""
 
     it "validates the presence of text", ->
-      attrs["text"] = ""
+      @attrs["text"] = ""
 
 describe "App.Collections.Notes", ->
   it "is defined", ->

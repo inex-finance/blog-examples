@@ -19,24 +19,22 @@
       return expect(note.get("text")).toEqual("");
     });
     return describe("Validation", function() {
-      var attrs;
-      attrs = {};
       beforeEach(function() {
-        return attrs = {
+        return this.attrs = {
           author: "John",
           text: "Sometext"
         };
       });
       afterEach(function() {
         var note;
-        note = new App.Models.Note(attrs);
+        note = new App.Models.Note(this.attrs);
         return expect(note.isValid()).toBeFalsy();
       });
       it("validates the presence of author", function() {
-        return attrs["author"] = "";
+        return this.attrs["author"] = "";
       });
       return it("validates the presence of text", function() {
-        return attrs["text"] = "";
+        return this.attrs["text"] = "";
       });
     });
   });
